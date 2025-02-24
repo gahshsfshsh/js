@@ -73,7 +73,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('parmesan')">Добавить</button>
             </div>
             <div class="product" data-product-id="vegetable-basket">
-                <img src="https://via.placeholder.com/150x150?text=Овощи" alt="Овощная корзина премиум">
+                <img src="images/овощи.png" alt="Овощная корзина премиум">
                 <div class="product-info">
                     <p class="product-name">Овощная корзина премиум</p>
                     <p class="product-price">700 руб./корзина</p>
@@ -94,7 +94,7 @@
             <form id="order-form">
                 <label for="address">Адрес доставки:</label>
                 <input type="text" id="address" name="address" required placeholder="Введите адрес">
-                <div id="map" style="width: 100%; height: 300px;"></div>
+                <div id="map" style="width: 100%; height: 400px; margin-top: 10px;"></div> <!-- Увеличили высоту карты -->
                 <label for="phone">Телефон:</label>
                 <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
                 <label for="delivery-time">Время доставки:</label>
@@ -155,6 +155,7 @@
             document.getElementById("checkout-form").style.display = "block";
             document.getElementById("cart").style.display = "none"; // Скрываем корзину
             initYandexMap(); // Инициализация карты
+            initAddressSearch(); // Инициализация поиска адреса
         }
 
         // Закрытие формы подтверждения заказа
@@ -184,6 +185,13 @@
                     var coords = myPlacemark.geometry.getCoordinates();
                     document.getElementById("address").value = `Координаты: ${coords}`;
                 });
+            });
+        }
+
+        // Инициализация поиска адреса
+        function initAddressSearch() {
+            ymaps.ready(function () {
+                var suggestView = new ymaps.SuggestView('address'); // Привязка к input#address
             });
         }
 
