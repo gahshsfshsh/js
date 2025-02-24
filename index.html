@@ -16,7 +16,7 @@
         <div id="catalog">
             <h2>Каталог товаров</h2>
             <div class="product" data-product-id="truffle">
-                <img src="images/шиитаке.png" alt="Грибы Трюфель">
+                <img src="images/truffle.png" alt="Грибы Трюфель">
                 <div class="product-info">
                     <p class="product-name">Грибы Трюфель</p>
                     <p class="product-price">2500 руб./кг</p>
@@ -24,7 +24,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('truffle')">Добавить</button>
             </div>
             <div class="product" data-product-id="caviar">
-                <img src="images/икра.png" alt="Икра красная">
+                <img src="images/caviar.png" alt="Икра красная">
                 <div class="product-info">
                     <p class="product-name">Икра красная</p>
                     <p class="product-price">3000 руб./кг</p>
@@ -32,7 +32,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('caviar')">Добавить</button>
             </div>
             <div class="product" data-product-id="beef-steak">
-                <img src="images/стейк.png" alt="Стейк из говядины">
+                <img src="images/beef-steak.png" alt="Стейк из говядины">
                 <div class="product-info">
                     <p class="product-name">Стейк из говядины (ангиус)</p>
                     <p class="product-price">1200 руб./кг</p>
@@ -40,7 +40,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('beef-steak')">Добавить</button>
             </div>
             <div class="product" data-product-id="olive-oil">
-                <img src="images/463855dd-70cd-45b4-b517-6a2603bc0263.png" alt="Оливковое масло Extra Virgin">
+                <img src="images/olive-oil.png" alt="Оливковое масло Extra Virgin">
                 <div class="product-info">
                     <p class="product-name">Оливковое масло Extra Virgin</p>
                     <p class="product-price">800 руб./бутылка</p>
@@ -48,7 +48,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('olive-oil')">Добавить</button>
             </div>
             <div class="product" data-product-id="crayfish">
-                <img src="images/77c97b1f-1c21-4eb1-8214-ae21e671d1c0.png" alt="Раки">
+                <img src="images/crayfish.png" alt="Раки">
                 <div class="product-info">
                     <p class="product-name">Раки</p>
                     <p class="product-price">350 руб./кг</p>
@@ -56,7 +56,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('crayfish')">Добавить</button>
             </div>
             <div class="product" data-product-id="honey">
-                <img src="images/9f2f6344-ac83-44ba-85e5-56b7a41a292b.png" alt="Мед липовый">
+                <img src="images/honey.png" alt="Мед липовый">
                 <div class="product-info">
                     <p class="product-name">Мед липовый</p>
                     <p class="product-price">400 руб./кг</p>
@@ -64,7 +64,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('honey')">Добавить</button>
             </div>
             <div class="product" data-product-id="parmesan">
-                <img src="images/463855dd-70cd-45b4-b517-6a2603bc0263.png" alt="Домашний сыр пармезан">
+                <img src="images/parmesan.png" alt="Домашний сыр пармезан">
                 <div class="product-info">
                     <p class="product-name">Домашний сыр пармезан</p>
                     <p class="product-price">500 руб./кг</p>
@@ -72,7 +72,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('parmesan')">Добавить</button>
             </div>
             <div class="product" data-product-id="vegetable-basket">
-                <img src="https://via.placeholder.com/150x150?text=Овощи" alt="Овощная корзина премиум">
+                <img src="images/vegetable-basket.png" alt="Овощная корзина премиум">
                 <div class="product-info">
                     <p class="product-name">Овощная корзина премиум</p>
                     <p class="product-price">700 руб./корзина</p>
@@ -99,12 +99,6 @@
                 <input type="datetime-local" id="delivery-time" name="delivery-time" required>
                 <button type="submit">Подтвердить заказ</button>
             </form>
-        </div>
-        <!-- Подтверждение заказа -->
-        <div id="confirmation" class="confirmation" style="display: none;">
-            <h2>Заказ успешно оформлен!</h2>
-            <p>Спасибо за ваш заказ! Мы свяжемся с вами в ближайшее время.</p>
-            <button onclick="closeConfirmation()">Вернуться в магазин</button>
         </div>
     </div>
     <script>
@@ -151,15 +145,6 @@
         // Открытие формы оформления заказа
         function openCheckoutForm() {
             document.getElementById("checkout-form").style.display = "block";
-            document.getElementById("cart").style.display = "none"; // Скрываем корзину
-            window.Telegram.WebApp.expand(); // Разворачиваем Web App на весь экран
-        }
-
-        // Закрытие формы подтверждения заказа
-        function closeConfirmation() {
-            document.getElementById("confirmation").style.display = "none";
-            document.getElementById("cart").style.display = "block"; // Показываем корзину снова
-            window.Telegram.WebApp.close(); // Закрываем Web App после завершения
         }
 
         // Обработка отправки формы
@@ -181,17 +166,11 @@
             // Отправка данных администратору
             await sendOrderToAdmin(orderDetails);
 
-            // Показываем подтверждение заказа
+            alert("Заказ успешно оформлен!");
             document.getElementById("checkout-form").style.display = "none";
-            document.getElementById("confirmation").style.display = "block";
-
-            // Очищаем корзину
             cart = {};
             totalPrice = 0;
             updateCart();
-
-            // Скрываем клавиатуру
-            window.Telegram.WebApp.hideKeyboard();
         });
 
         // Отправка данных администратору
