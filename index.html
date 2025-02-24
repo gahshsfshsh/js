@@ -77,29 +77,37 @@
         <!-- Каталог товаров -->
         <div id="catalog">
             <h2>Каталог товаров</h2>
-            <div class="product" data-product-id="apple">
-                <img src="https://images.pexels.com/photos/109265/pexels-photo-109265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Яблоки">
+            <div class="product" data-product-id="crayfish">
+                <img src="https://images.pexels.com/photos/130888/pexels-photo-130888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Раки">
                 <div class="product-info">
-                    <p class="product-name">Яблоки</p>
-                    <p class="product-price">50 руб.</p>
+                    <p class="product-name">Раки</p>
+                    <p class="product-price">350 руб./кг</p>
                 </div>
-                <button class="add-to-cart-btn" onclick="addToCart('apple')">Добавить</button>
+                <button class="add-to-cart-btn" onclick="addToCart('crayfish')">Добавить</button>
             </div>
-            <div class="product" data-product-id="carrot">
-                <img src="https://images.pexels.com/photos/109267/pexels-photo-109267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Морковь">
+            <div class="product" data-product-id="mushrooms">
+                <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Грибы">
                 <div class="product-info">
-                    <p class="product-name">Морковь</p>
-                    <p class="product-price">30 руб.</p>
+                    <p class="product-name">Грибы</p>
+                    <p class="product-price">200 руб./кг</p>
                 </div>
-                <button class="add-to-cart-btn" onclick="addToCart('carrot')">Добавить</button>
+                <button class="add-to-cart-btn" onclick="addToCart('mushrooms')">Добавить</button>
             </div>
-            <div class="product" data-product-id="tomato">
-                <img src="https://images.pexels.com/photos/109266/pexels-photo-109266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Помидоры">
+            <div class="product" data-product-id="honey">
+                <img src="https://images.pexels.com/photos/1639555/pexels-photo-1639555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Мед">
                 <div class="product-info">
-                    <p class="product-name">Помидоры</p>
-                    <p class="product-price">80 руб.</p>
+                    <p class="product-name">Мед</p>
+                    <p class="product-price">400 руб./кг</p>
                 </div>
-                <button class="add-to-cart-btn" onclick="addToCart('tomato')">Добавить</button>
+                <button class="add-to-cart-btn" onclick="addToCart('honey')">Добавить</button>
+            </div>
+            <div class="product" data-product-id="cheese">
+                <img src="https://images.pexels.com/photos/1639553/pexels-photo-1639553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Сыр">
+                <div class="product-info">
+                    <p class="product-name">Сыр домашний</p>
+                    <p class="product-price">300 руб./кг</p>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('cheese')">Добавить</button>
             </div>
         </div>
 
@@ -159,14 +167,21 @@
             cart = {};
             totalPrice = 0;
             updateCart();
+
+            // Отправка данных в бот
+            window.Telegram.WebApp.sendData(JSON.stringify({
+                products: cart,
+                total_price: totalPrice
+            }));
         }
 
         // Получение цены товара
         function getProductPrice(productId) {
             const prices = {
-                apple: 50,
-                carrot: 30,
-                tomato: 80
+                crayfish: 350,
+                mushrooms: 200,
+                honey: 400,
+                cheese: 300
             };
             return prices[productId] || 0;
         }
@@ -174,9 +189,10 @@
         // Получение названия товара
         function getProductName(productId) {
             const names = {
-                apple: "Яблоки",
-                carrot: "Морковь",
-                tomato: "Помидоры"
+                crayfish: "Раки",
+                mushrooms: "Грибы",
+                honey: "Мед",
+                cheese: "Сыр домашний"
             };
             return names[productId] || "Неизвестный товар";
         }
