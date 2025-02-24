@@ -8,25 +8,44 @@
 </head>
 <body>
     <div class="container">
-        <h1>Фермерский магазин</h1>
+        <header>
+            <h1>Элитный фермерский магазин</h1>
+            <p>Свежие, натуральные и премиальные продукты от лучших фермеров!</p>
+        </header>
         <!-- Каталог товаров -->
         <div id="catalog">
             <h2>Каталог товаров</h2>
-            <div class="product" data-product-id="shiitake">
-                <img src="images/shiitake.png" alt="Грибы Шиитаке">
+            <div class="product" data-product-id="truffle">
+                <img src="images/truffle.png" alt="Грибы Трюфель">
                 <div class="product-info">
-                    <p class="product-name">Грибы Шиитаке</p>
-                    <p class="product-price">300 руб./кг</p>
+                    <p class="product-name">Грибы Трюфель</p>
+                    <p class="product-price">2500 руб./кг</p>
                 </div>
-                <button class="add-to-cart-btn" onclick="addToCart('shiitake')">Добавить</button>
+                <button class="add-to-cart-btn" onclick="addToCart('truffle')">Добавить</button>
             </div>
-            <div class="product" data-product-id="pork-meat">
-                <img src="images/pork-meat.png" alt="Свинной фарш">
+            <div class="product" data-product-id="caviar">
+                <img src="images/caviar.png" alt="Икра красная">
                 <div class="product-info">
-                    <p class="product-name">Свинной фарш</p>
-                    <p class="product-price">450 руб./кг</p>
+                    <p class="product-name">Икра красная</p>
+                    <p class="product-price">3000 руб./кг</p>
                 </div>
-                <button class="add-to-cart-btn" onclick="addToCart('pork-meat')">Добавить</button>
+                <button class="add-to-cart-btn" onclick="addToCart('caviar')">Добавить</button>
+            </div>
+            <div class="product" data-product-id="beef-steak">
+                <img src="images/beef-steak.png" alt="Стейк из говядины">
+                <div class="product-info">
+                    <p class="product-name">Стейк из говядины (ангиус)</p>
+                    <p class="product-price">1200 руб./кг</p>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('beef-steak')">Добавить</button>
+            </div>
+            <div class="product" data-product-id="olive-oil">
+                <img src="images/olive-oil.png" alt="Оливковое масло Extra Virgin">
+                <div class="product-info">
+                    <p class="product-name">Оливковое масло Extra Virgin</p>
+                    <p class="product-price">800 руб./бутылка</p>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('olive-oil')">Добавить</button>
             </div>
             <div class="product" data-product-id="crayfish">
                 <img src="images/crayfish.png" alt="Раки">
@@ -37,26 +56,26 @@
                 <button class="add-to-cart-btn" onclick="addToCart('crayfish')">Добавить</button>
             </div>
             <div class="product" data-product-id="honey">
-                <img src="images/honey.png" alt="Мед">
+                <img src="images/honey.png" alt="Мед липовый">
                 <div class="product-info">
-                    <p class="product-name">Мед</p>
+                    <p class="product-name">Мед липовый</p>
                     <p class="product-price">400 руб./кг</p>
                 </div>
                 <button class="add-to-cart-btn" onclick="addToCart('honey')">Добавить</button>
             </div>
-            <div class="product" data-product-id="cheese">
-                <img src="images/cheese.png" alt="Домашний сыр">
+            <div class="product" data-product-id="parmesan">
+                <img src="images/parmesan.png" alt="Домашний сыр пармезан">
                 <div class="product-info">
-                    <p class="product-name">Домашний сыр</p>
-                    <p class="product-price">300 руб./кг</p>
+                    <p class="product-name">Домашний сыр пармезан</p>
+                    <p class="product-price">500 руб./кг</p>
                 </div>
-                <button class="add-to-cart-btn" onclick="addToCart('cheese')">Добавить</button>
+                <button class="add-to-cart-btn" onclick="addToCart('parmesan')">Добавить</button>
             </div>
             <div class="product" data-product-id="vegetable-basket">
-                <img src="images/vegetable-basket.png" alt="Овощная корзина">
+                <img src="images/vegetable-basket.png" alt="Овощная корзина премиум">
                 <div class="product-info">
-                    <p class="product-name">Овощная корзина</p>
-                    <p class="product-price">500 руб./корзина</p>
+                    <p class="product-name">Овощная корзина премиум</p>
+                    <p class="product-price">700 руб./корзина</p>
                 </div>
                 <button class="add-to-cart-btn" onclick="addToCart('vegetable-basket')">Добавить</button>
             </div>
@@ -163,12 +182,14 @@
         // Получение цены товара
         function getProductPrice(productId) {
             const prices = {
-                shiitake: 300,
-                porkMeat: 450,
+                truffle: 2500,
+                caviar: 3000,
+                beefSteak: 1200,
+                oliveOil: 800,
                 crayfish: 350,
                 honey: 400,
-                cheese: 300,
-                vegetableBasket: 500
+                parmesan: 500,
+                vegetableBasket: 700
             };
             return prices[productId] || 0;
         }
@@ -176,12 +197,14 @@
         // Получение названия товара
         function getProductName(productId) {
             const names = {
-                shiitake: "Грибы Шиитаке",
-                porkMeat: "Свинной фарш",
+                truffle: "Грибы Трюфель",
+                caviar: "Икра красная",
+                beefSteak: "Стейк из говядины (ангиус)",
+                oliveOil: "Оливковое масло Extra Virgin",
                 crayfish: "Раки",
-                honey: "Мед",
-                cheese: "Домашний сыр",
-                vegetableBasket: "Овощная корзина"
+                honey: "Мед липовый",
+                parmesan: "Домашний сыр пармезан",
+                vegetableBasket: "Овощная корзина премиум"
             };
             return names[productId] || "Неизвестный товар";
         }
