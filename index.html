@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фермерский магазин</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .product img {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+        .product-info {
+            flex: 1;
+        }
+        .product-name {
+            font-size: 18px;
+            margin: 0;
+        }
+        .product-price {
+            font-size: 16px;
+            color: green;
+        }
+        .add-to-cart-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Фермерский магазин</h1>
+
+        <!-- Каталог товаров -->
+        <div id="catalog">
+            <h2>Каталог товаров</h2>
+            <div class="product" data-product-id="apple">
+                <img src="https://images.pexels.com/photos/109265/pexels-photo-109265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Яблоки">
+                <div class="product-info">
+                    <p class="product-name">Яблоки</p>
+                    <p class="product-price">50 руб.</p>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('apple')">Добавить</button>
+            </div>
+            <div class="product" data-product-id="carrot">
+                <img src="https://images.pexels.com/photos/109267/pexels-photo-109267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Морковь">
+                <div class="product-info">
+                    <p class="product-name">Морковь</p>
+                    <p class="product-price">30 руб.</p>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('carrot')">Добавить</button>
+            </div>
+            <div class="product" data-product-id="tomato">
+                <img src="https://images.pexels.com/photos/109266/pexels-photo-109266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Помидоры">
+                <div class="product-info">
+                    <p class="product-name">Помидоры</p>
+                    <p class="product-price">80 руб.</p>
+                </div>
+                <button class="add-to-cart-btn" onclick="addToCart('tomato')">Добавить</button>
+            </div>
+        </div>
+
+        <!-- Корзина -->
+        <div id="cart" class="cart">
+            <h2>Корзина</h2>
+            <ul id="cart-items"></ul>
+            <p class="total">Итого: <span id="total-price">0 руб.</span></p>
+            <button id="checkout-btn" onclick="checkout()" style="display: none;">Оформить заказ</button>
+        </div>
+    </div>
+
+    <script>
+        // Инициализация корзины
+        let cart = {};
+        let totalPrice = 0;
+
+        // Добавление товара в корзину
+        function addToCart(productId) {
+            if (!cart[productId]) {
+                cart[productId] = { quantity: 0, price: getProductPrice(productId) };
+            }
+            cart[productId].quantity += 1;
+            updateCart();
+        }
+
+        // Обновление корзины
+        function updateCart() {
+            const cartItemsList = document.getElementById("cart-items");
+            const totalPriceElement = document.getElementById("total-price");
+            const checkoutBtn = document.getElementById("checkout-btn");
+
+            cartItemsList.innerHTML = "";
+            totalPrice = 0;
+
+            for (const productId in cart) {
+                const product = cart[productId];
+                totalPrice += product.price * product.quantity;
+
+                const li = document.createElement("li");
+                li.textContent = `${getProductName(productId)} x ${product.quantity} = ${product.price * product.quantity} руб.`;
+                cartItemsList.appendChild(li);
+            }
+
+            totalPriceElement.textContent = `${totalPrice} руб.`;
+
+            if (totalPrice > 0) {
+                checkoutBtn.style.display = "block";
+            } else {
+                checkoutBtn.style.display = "none";
+            }
+        }
+
+        // Оформление заказа
+        function checkout() {
+            alert("Заказ успешно оформлен! Сумма: " + totalPrice + " руб.");
+            cart = {};
+            totalPrice = 0;
+            updateCart();
+        }
+
+        // Получение цены товара
+        function getProductPrice(productId) {
+            const prices = {
+                apple: 50,
+                carrot: 30,
+                tomato: 80
+            };
+            return prices[productId] || 0;
+        }
+
+        // Получение названия товара
+        function getProductName(productId) {
+            const names = {
+                apple: "Яблоки",
+                carrot: "Морковь",
+                tomato: "Помидоры"
+            };
+            return names[productId] || "Неизвестный товар";
+        }
+    </script>
+</body>
+</html>
