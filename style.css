@@ -1,3 +1,4 @@
+/* Общие стили */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -16,10 +17,19 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+header {
     text-align: center;
-    color: #333;
+    margin-bottom: 20px;
+}
+
+header h1 {
     font-size: 2.5em;
+    color: #333;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #555;
 }
 
 .product {
@@ -33,10 +43,11 @@ h1 {
 }
 
 .product img {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     margin-right: 15px;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .product-info {
@@ -46,11 +57,13 @@ h1 {
 .product-name {
     font-size: 1.2em;
     margin: 0;
+    color: #333;
 }
 
 .product-price {
     font-size: 1em;
     color: green;
+    font-weight: bold;
 }
 
 .add-to-cart-btn {
@@ -107,13 +120,4 @@ h1 {
 
 .checkout-form label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.checkout-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5
+    margin
