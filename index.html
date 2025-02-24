@@ -77,7 +77,7 @@
         <div id="catalog">
             <h2>Каталог товаров</h2>
             <div class="product" data-product-id="crayfish">
-                <img src="images/crayfish.jpg" alt="Раки">
+                <img src="images/77c97b1f-1c21-4eb1-8214-ae21e671d1c0.png" alt="Раки">
                 <div class="product-info">
                     <p class="product-name">Раки</p>
                     <p class="product-price">350 руб./кг</p>
@@ -85,7 +85,7 @@
                 <button class="add-to-cart-btn" onclick="addToCart('crayfish')">Добавить</button>
             </div>
             <div class="product" data-product-id="mushrooms">
-                <img src="images/mushrooms.jpg" alt="Грибы">
+                <img src="images/9f2f6344-ac83-44ba-85e5-56b7a41a292b.png" alt="Грибы">
                 <div class="product-info">
                     <p class="product-name">Грибы</p>
                     <p class="product-price">200 руб./кг</p>
@@ -93,20 +93,12 @@
                 <button class="add-to-cart-btn" onclick="addToCart('mushrooms')">Добавить</button>
             </div>
             <div class="product" data-product-id="honey">
-                <img src="images/honey.jpg" alt="Мед">
+                <img src="images/463855dd-70cd-45b4-b517-6a2603bc0263.png" alt="Мед">
                 <div class="product-info">
                     <p class="product-name">Мед</p>
                     <p class="product-price">400 руб./кг</p>
                 </div>
                 <button class="add-to-cart-btn" onclick="addToCart('honey')">Добавить</button>
-            </div>
-            <div class="product" data-product-id="cheese">
-                <img src="images/cheese.jpg" alt="Сыр">
-                <div class="product-info">
-                    <p class="product-name">Сыр домашний</p>
-                    <p class="product-price">300 руб./кг</p>
-                </div>
-                <button class="add-to-cart-btn" onclick="addToCart('cheese')">Добавить</button>
             </div>
         </div>
         <!-- Корзина -->
@@ -177,8 +169,7 @@
             const prices = {
                 crayfish: 350,
                 mushrooms: 200,
-                honey: 400,
-                cheese: 300
+                honey: 400
             };
             return prices[productId] || 0;
         }
@@ -188,8 +179,7 @@
             const names = {
                 crayfish: "Раки",
                 mushrooms: "Грибы",
-                honey: "Мед",
-                cheese: "Сыр домашний"
+                honey: "Мед"
             };
             return names[productId] || "Неизвестный товар";
         }
