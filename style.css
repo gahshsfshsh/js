@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
+    background: url('images/фон.png') no-repeat center center fixed;
     background-size: cover;
     color: #333;
 }
@@ -120,4 +120,81 @@ header p {
 
 .checkout-form label {
     display: block;
-    margin
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.checkout-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.checkout-form button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-form button:hover {
+    background-color: #21618c;
+}
+
+.confirmation {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.confirmation button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirmation button:hover {
+    background-color: #229954;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    .product img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .add-to-cart-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    #checkout-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .checkout-form input {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .checkout-form button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+}
