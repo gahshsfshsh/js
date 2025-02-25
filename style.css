@@ -112,11 +112,11 @@ header p {
 
 .checkout-form {
     margin-top: 20px;
-    padding: 30px; /* Увеличили отступы */
+    padding: 30px;
     background: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 10px;
-    min-height: 600px; /* Увеличили высоту формы */
+    min-height: 600px;
 }
 
 .checkout-form label {
